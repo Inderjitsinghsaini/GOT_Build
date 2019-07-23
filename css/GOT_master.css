@@ -35,6 +35,7 @@ main {
 	margin:0 auto;
 	overflow:hidden;
 }
+.house-info{color:#fff;}
 
 #houseImages { position:relative; width:4000px; transition: all .5s; }
 #houseImages img { float:left; }
@@ -122,3 +123,5 @@ video {
 	border: thin solid #949393;
 	display:block;
 }
+
+
