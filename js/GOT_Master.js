@@ -38,12 +38,23 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		//debug this so far and make sure the event handling works
 		//debugger;
 		//make the lightbox
-		lightBox.classList.add('show-lightbox')
+		lightBox.classList.add('show-lightbox')//make the lightbox show up
+		//make the lightbox show up
+			//
+			////get the classname property split it inot seperate words
+			///then get the last word -> [1] -> that will always be the house name
+		let houseName = this.className.split(" ")[1];
+		houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+		let videoPath= `video/House-${houseName}.mp4`;
+		houseVideo.src = videoPath;
+		houseVideo.load();
+
 		houseVideo.play();
+		//grab a reference to the current video via the classname object
 	}
 		function closeLightBox(event){
 			event.preventDefault(); //e and event mean the same thing they are event handlers
-			//make the lightbox show up
+			
 			lightBox.classList.remove('show-lightbox');
 			houseVideo.currentTime = 0;
 			houseVideo.pause();
@@ -63,8 +74,8 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 			houseName.textContent = `House    ${houseData[multiplier][0]}`;
 			houseInfo.textContent = houseData[multiplier][1];
 		}
-		//sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
-		sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
+		sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
+		//sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
 		closeButton.addEventListener("click", closeLightBox)
 
 		houseVideo.addEventListener('ended', closeLightBox)
