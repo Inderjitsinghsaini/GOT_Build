@@ -5,10 +5,13 @@
 	const sigils = document.querySelectorAll('.sigilContainer'),
 		lightBox = document.querySelector('.lightbox'),
 		closeButton = document.querySelector('.close-lightbox'),
-		houseVideo = document.querySelector('.house-stark'),
+		houseVideo = document.querySelector('.house-video'),
 		bannerImages = document.querySelector('#houseImages'),
 		houseName= document.querySelector("#house-name"),
-		houseInfo= document.querySelector('.house-info');
+		houseInfo= document.querySelector('.house-info'),
+		pauseButton = document.querySelector('.fa-pause-circle');
+		playButton = document.querySelector('.fa-play');
+		rewindButton = document.querySelector('.fa-backward');
 
 		const houseData =[//// houseData[0]
 		["stark", `House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.
@@ -34,6 +37,23 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		    ["arryn",`House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority. 
 `]
 		    ];
+
+
+		    //pause the video on a click
+		    function pauseVideo(){
+		    	houseVideo.pause();
+		    	console.log('paused')
+		    }
+
+		    function playVideo(){
+		    	houseVideo.play();
+		    	console.log('played')
+		    }
+		    function rewindVideo(){
+		    	houseVideo.currentTime=0;
+		    	console.log('startOver')
+		    }
+		    //write the other fun
 	function popLightBox(){
 		//debug this so far and make sure the event handling works
 		//debugger;
@@ -76,7 +96,10 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		}
 		sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
 		//sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
-		closeButton.addEventListener("click", closeLightBox)
+		closeButton.addEventListener("click", closeLightBox);
 
-		houseVideo.addEventListener('ended', closeLightBox)
+		houseVideo.addEventListener('ended', closeLightBox);
+		pauseButton.addEventListener("click", pauseVideo);
+		playButton.addEventListener("click", playVideo);
+		rewindButton.addEventListener("click", rewindVideo);
 	})();
